@@ -1,0 +1,56 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} bootstrap4 {% endcomment %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- Alternative to Bootstrap 3 Glyphicons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- master CSS -->
+    <link rel="stylesheet" href="{% static 'mypersonalweb/css/master.css'%}">
+
+    <!-- Alternative to Bootstrap 3 Glyphicons -->
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+
+    <title>Document</title>
+</head>
+<body>
+
+<!--  fixed-top -->
+  <nav class="navbar navbar-expand-lg bg-dark mynav" role="navigation" id="navbar">
+    <div class="container">
+      <div class="navbar-nav align-items-center">
+        <a class="navbar-brand mynav" href="{% url 'home' %}">Home</a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <a class="nav-item nav-link" href="" class="btn btn-simple">Projects</a>
+          <a class="nav-item nav-link" href="{% url 'core:uploadresume'%}" class="btn btn-simple">Upload Resume</a>
+          <a class="nav-item nav-link" href="{% url 'admin:index' %}" class="btn btn-simple">Admin</a>
+          <a class="nav-item nav-link" href="{% url 'core:logout' %}" class="btn btn-simple">Sign Out</a>
+          {% comment %} <a class="nav-item nav-link" href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a> {% endcomment %}
+        {% else %}
+          <a class="nav-item nav-link" href="" class="btn btn-simple">Projects</a>
+          <a class="nav-item nav-link" href="" class="btn btn-simple">Resume</a>
+          
+          <a class="nav-item nav-link" href="https://github.com/bennergarrett"class="btn btn-simple"><span class='fab fa-github fa-lg'></span></a>
+          <a class="nav-item nav-link" href="https://www.linkedin.com/in/bennergarrett/" class="btn btn-simple"><span class='fab fa-linkedin fa-lg'></span></a>
+          <a class="nav-item nav-link" href="{% url 'core:login' %}" class="btn btn-simple">Sign In</a>
+
+          {% comment %} <a class="nav-item nav-link" href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a> {% endcomment %} 
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <div class='container'>
+    {%block content%}
+
+    {%endblock%}
+  </div>
+
+</body>
+</html>
