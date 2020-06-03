@@ -5,7 +5,7 @@
 {% block postedcontent %}
 	<h4>Create new Project Post!</h4>
 
-	<form method="post" action="{% url 'core:create' %}" id="postForm">
+	<form class = 'post-form' method="post">
 		{% csrf_token %}
 		{{ form.as_p }}
 		

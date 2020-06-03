@@ -66,7 +66,7 @@ class CreateProjectPostView(LoginRequiredMixin, SelectRelatedMixin, generic.Crea
     
 class UpdateProjectPostView(LoginRequiredMixin, generic.UpdateView):
     login_url='/login/'
-    redirect_field_name = reverse_lazy('project_single')
+    # success_url = reverse_lazy('core:project_single')
     form_class = PostForm
     model = ProjectsPost
     

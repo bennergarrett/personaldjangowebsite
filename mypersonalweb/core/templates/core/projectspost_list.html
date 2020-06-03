@@ -10,7 +10,7 @@
                 <h1 class='card-title'><a class="card-link btn btn-primary" href="{% url 'core:project_single' post.pk %}">{{ post.title }}</a></h1>
             
 
-                <p>Post: {{ post.message|truncatewords:20 }}...</p>
+                <p>Post: {{ post.message|truncatewords:20 }}</p>
                 <p>Author: {{ post.author }}</p>
                 <p>Published: {{ post.created_at|date }}</p>
                 {%if user.is_authenticated%}
