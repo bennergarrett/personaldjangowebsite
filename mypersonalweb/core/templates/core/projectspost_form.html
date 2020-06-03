@@ -1,0 +1,17 @@
+{% extends 'core/core_base.html' %}
+{% load bootstrap4 %}
+
+
+{% block postedcontent %}
+	<h4>Create new Project Post!</h4>
+
+	<form method="post" action="{% url 'core:create' %}" id="postForm">
+		{% csrf_token %}
+		{{ form.as_p }}
+		
+		{% buttons %}
+			<button type="submit" class="btn btn-primary btn-large">Post</button>
+		{% endbuttons %}
+	</form>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'core/core_base.html' %}
+
+{% block postedcontent %}
+
+<div class='jumbotron'>Currently in Development!</div>
+
+    {% for post in  page_obj %}
+        <div class='card' >
+            <div class='card-body'>
+                <h1 class='card-title'><a class="card-link btn btn-primary" href="{% url 'core:project_single' post.pk %}">{{ post.title }}</a></h1>
+            
+
+                <p>Post: {{ post.message|truncatewords:20 }}...</p>
+                <p>Author: {{ post.author }}</p>
+                <p>Published: {{ post.created_at|date }}</p>
+                {%if user.is_authenticated%}
+                    <a href="{% url 'core:update_post' pk=post.pk %}" class="btn btn-primary btn-warning">
+                        <span class="fa fa-edit"> </span> Edit
+                    </a>
+            
+                    <a href="{% url 'core:delete_post' pk=post.pk %}" class="btn btn-danger">
+                        <span class="fa fa-remove"> </span> Remove
+                    </a>
+        
+                {%endif%}
+            </div>
+        </div>
+    {%endfor%}
+
+
+{% endblock postedcontent %}
+
+{% block postcontent %}
+ 
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+{% endblock postcontent %}

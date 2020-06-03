@@ -27,15 +27,16 @@
       </div>
       <div class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
-          <a class="nav-item nav-link" href="" class="btn btn-simple">Projects</a>
+          <a class="nav-item nav-link" href="{% url 'core:project_all' %}" class="btn btn-simple">Projects</a>
+          <a class="nav-item nav-link" href="{% url 'core:create'%}" class="btn btn-simple">Create Post</a>
           <a class="nav-item nav-link" href="{% url 'core:uploadresume'%}" class="btn btn-simple">Upload Resume</a>
           <a class="nav-item nav-link" href="{% url 'admin:index' %}" class="btn btn-simple">Admin</a>
           <a class="nav-item nav-link" href="{% url 'core:logout' %}" class="btn btn-simple">Sign Out</a>
           {% comment %} <a class="nav-item nav-link" href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a> {% endcomment %}
         {% else %}
-          <a class="nav-item nav-link" href="" class="btn btn-simple">Projects</a>
+          <a class="nav-item nav-link" href="{% url 'core:project_all' %}" class="btn btn-simple">Projects</a>
           <a class="nav-item nav-link" href="" class="btn btn-simple">Resume</a>
-          
+          <a class="nav-item nav-link" href="{% url 'core:contact' %}" class="btn btn-simple">Contact</a>
           <a class="nav-item nav-link" href="https://github.com/bennergarrett"class="btn btn-simple"><span class='fab fa-github fa-lg'></span></a>
           <a class="nav-item nav-link" href="https://www.linkedin.com/in/bennergarrett/" class="btn btn-simple"><span class='fab fa-linkedin fa-lg'></span></a>
           <a class="nav-item nav-link" href="{% url 'core:login' %}" class="btn btn-simple">Sign In</a>
